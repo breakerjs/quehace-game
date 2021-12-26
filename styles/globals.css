@@ -14,3 +14,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+#tituloPagina {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 67px;
+}
+
+@media screen and (max-width: 527px) {
+  #tituloPagina {
+    font-size: 30px;
+  }
+}
+
+#texto1, #texto2 {
+  opacity: 0;
+}
