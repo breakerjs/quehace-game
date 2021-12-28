@@ -2,6 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import {
+  server
+} from '../config/index';
 
 export default function Home({ tiradaCarta1, tiradaCarta2 }) {
   return (
@@ -34,8 +37,8 @@ export default function Home({ tiradaCarta1, tiradaCarta2 }) {
         </div>
         <br/><br/><br/><br/>
         <div className='d-flex justify-content-center font-weight-bold' >
-              <h3 id='texto1'>{tiradaCarta1}</h3>
-              <h3 id='texto2'>&nbsp;{tiradaCarta2}</h3>
+              <h3 id='texto1'><strong>{tiradaCarta1}</strong></h3>
+              <h3 id='texto2'><strong>&nbsp;{tiradaCarta2}</strong></h3>
         </div>
         <br/><br/><br/><br/><br/>
         <nav className='navbar fixed-bottom navbar-light bg-light rounded-5'>
@@ -48,7 +51,7 @@ export default function Home({ tiradaCarta1, tiradaCarta2 }) {
 }
 
 export async function getStaticProps () {
-  const res = await fetch('http://localhost:3000/api/gameDefault')
+  const res = await fetch(`${server}/api/gameDefault`)
   const tiradaCarta1 = await res.json()
   const random = Math.floor(Math.random() * tiradaCarta1.length)
   return {
