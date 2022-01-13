@@ -50,8 +50,9 @@ export default function Home({ tiradaCarta1, tiradaCarta2 }) {
   )
 }
 
+
 export async function getStaticProps () {
-  const res = await fetch(`${server}/api/gameDefault`)
+  const res = await fetch(`https://quehace-game.vercel.app/api/gameDefault`)
   const tiradaCarta1 = await res.json()
   const random = Math.floor(Math.random() * tiradaCarta1.length)
   return {
