@@ -55,10 +55,11 @@ export async function getStaticProps () {
   const res = await fetch(`https://quehace-game.vercel.app/api/gameDefault`)
   const tiradaCarta1 = await res.json()
   const random = Math.floor(Math.random() * tiradaCarta1.length)
+  const random2 = Math.floor(Math.random() * tiradaCarta1.length)
   return {
     props: {
       tiradaCarta1: tiradaCarta1[random].primerTexto,
-      tiradaCarta2: tiradaCarta1[random].segundoTexto
+      tiradaCarta2: tiradaCarta1[random2].segundoTexto
     }
   }
 }
