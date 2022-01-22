@@ -17,6 +17,10 @@ export default function Home({ tiradaCarta1, tiradaCarta2 }) {
         <link rel='preconnect' href='https://fonts.googleapis.com'/>
         <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true'/>
         <link href='https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap' rel='stylesheet'/>
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
       </Head>
       <main>
         <div className='container-fluid bg-light mt-5'>
@@ -29,9 +33,20 @@ export default function Home({ tiradaCarta1, tiradaCarta2 }) {
         <div className='tiradaCartas d-flex justify-content-center'>
           <button className='btn btn-secondary' onClick={(e) => {
             if(document.getElementById('texto1').style.opacity == 0) {
+              document.getElementById('texto1').classList.add('animate__animated', 'animate__rotateInDownLeft');
               document.getElementById('texto1').style.opacity = 1
+              
             } else if (document.getElementById('texto1').style.opacity == 1) {
+              document.getElementById('texto2').classList.add('animate__animated', 'animate__rotateInDownLeft');
               document.getElementById('texto2').style.opacity = 1
+              
+            } 
+            
+            if (document.getElementById('texto1').style.opacity == 1 && document.getElementById('texto2').style.opacity == 1) {
+              setTimeout(() => {
+                window.location.reload();
+              }, 5000)
+              
             }
           }}>Lanzar Carta</button>
         </div>
@@ -52,10 +67,10 @@ export default function Home({ tiradaCarta1, tiradaCarta2 }) {
 
 
 export async function getStaticProps () {
-  const res = await fetch(`https://quehace-game.vercel.app/api/gameDefault`)
+  const res = await fetch(`http://localhost:3000/api/gameDefault`)
   const tiradaCarta1 = await res.json()
   const random = Math.floor(Math.random() * tiradaCarta1.length)
-  const random2 = Math.floor(Math.random() * tiradaCarta1.length)
+  const random2 = Math.floor(Math.random() * tiradaCarta1.length) 
   return {
     props: {
       tiradaCarta1: tiradaCarta1[random].primerTexto,
