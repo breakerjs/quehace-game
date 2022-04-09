@@ -64,7 +64,7 @@ export default function Home({ tiradaCarta1, tiradaCarta2 }) {
 }
 
 
-export async function getStaticProps () {
+export async function getServerSideProps () {
   const res = await fetch(`https://quehace-api.vercel.app/datos.json`)
   const tiradaCarta1 = await res.json()
   const random = Math.floor(Math.random() * tiradaCarta1.length)
