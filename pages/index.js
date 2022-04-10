@@ -43,7 +43,7 @@ export default function Home({ tiradaCarta1, tiradaCarta2 }) {
             if (document.getElementById('texto1').style.opacity == 1 && document.getElementById('texto2').style.opacity == 1) {
               setTimeout(() => {
                 window.location.reload();
-              }, 5000)
+              }, 3500)
               
             }
           }}>Lanzar Carta</button>
